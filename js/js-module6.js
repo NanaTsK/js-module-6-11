@@ -21,6 +21,9 @@
 
 //*     ----->     ----->     Example 1 - Властивості та атрибути
 //===================================================
+console.log(`____________________`);
+console.log(`Example 1 :`);
+
 const message = document.querySelector("#message");
 console.log(message.value); // Default textarea message
 
@@ -37,6 +40,9 @@ image.src = 'https://picsum.photos/id/20/300/200';
 
 //*     ----->     ----->     Example 2 - Властивість textContent
 //===================================================
+console.log(`____________________`);
+console.log(`Example 2 :`);
+
 const title = document.querySelector(".article-title");
 title.textContent = "Welcome to heaven";
 console.log(title.textContent);
@@ -48,6 +54,8 @@ console.log(text1.textContent);
 
 //*     ----->     ----->     Example 3 - Властивість classList
 //===================================================
+console.log(`____________________`);
+console.log(`Example 3 :`);
 
 const text = document.querySelector("#paragraph");
 
@@ -77,6 +85,9 @@ text.classList.forEach(cls => {
 
 //*     ----->     ----->     Example 4 - Властивість style
 //===================================================
+console.log(`____________________`);
+console.log(`Example 4 :`);
+
 text.style.backgroundColor = "yellowgreen";
 text.style.fontSize = "18px";
 text.style.textAlign = "center";
@@ -87,6 +98,8 @@ console.log(text.style); // inline styles object
 
 //*     ----->     ----->     Example 5 - Атрибути
 //===================================================
+console.log(`____________________`);
+console.log(`Example 5 :`);
 
 const image1 = document.querySelector(".image1");
 
@@ -106,6 +119,8 @@ console.log(image1.getAttribute("alt")); // Amazing nature
 
 //*     ----->     ----->     Example 6 - data-атрибути
 //===================================================
+console.log(`____________________`);
+console.log(`Example 6 :`);
 
 const saveBtn = document.querySelector('.editor button[data-action="save"]');
 console.log(saveBtn.dataset.action); // "save"
@@ -123,3 +138,5 @@ dishes.forEach((dish) => {
 
 //*     ----->     ----->     Example 7 - 
 //===================================================
+console.log(`____________________`);
+console.log(`Example 7 :`);
