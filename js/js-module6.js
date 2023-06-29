@@ -134,6 +134,7 @@ dishes.forEach((dish) => {
 });
 // 14 7 3 61 <- their data-id from html  
 
+
 // //* _________________________________________________________ *//
 
 //*     ----->     ----->     Example 7 - 
@@ -183,14 +184,126 @@ console.log(`____________________`);
 console.log(`Example 8 :`);
 
 
-const list = document.querySelector(".list");
+// const list = document.querySelector(".list");
 
-const technologies = ["HTML", "CSS", "JavaScript", "React", "Node"];
-const itemsArr = technologies.map((technology) => {
-    return `<li>${technology}</li>`;
-});
-console.log(itemsArr);
-const listElement = `<ul>${itemsArr.join("")}</ul>`;
-document.ol.insertAdjacentHTML("beforeend", listElement);
+// const technologies = ["HTML", "CSS", "JavaScript", "React", "Node"];
+// const itemsArr = technologies.map((technology) => {
+//     return `<li>${technology}</li>`;
+// });
+// console.log(itemsArr);
+// const listElement = `<ul>${itemsArr.join("")}</ul>`;
+// document.ol.insertAdjacentHTML("beforeend", listElement);
 // document.body.insertAdjacentHTML('beforeend', listElement);
 
+// //* _________________________________________________________ *//
+
+//*     ----->     ----->     Example 9 - Подія input
+//===================================================
+console.log(`____________________`);
+console.log(`Example 9 :`);
+
+
+const textInput = document.querySelector(".text-input");
+const output = document.querySelector(".output");
+
+textInput.addEventListener("input", (event) => {
+  output.textContent = event.currentTarget.value;
+});
+
+
+// //* _________________________________________________________ *//
+
+//*     ----->     ----->     Example 10 - Подія submit - Події елементів форм
+//===================================================
+console.log(`____________________`);
+console.log(`Example 10 :`);
+
+
+const form = document.querySelector(".form");
+form.addEventListener("submit", handleSubmit);
+
+function handleSubmit(event) {
+  event.preventDefault();
+  const {elements: {login, password}
+  } = event.currentTarget;
+
+  if (login.value === "" || password.value === "") {
+    return console.log("Please fill in all the fields!");
+  } 
+  console.log(`Login: ${login.value}, Password: ${password.value}`);
+  event.currentTarget.reset();
+};
+
+// //* _________________________________________________________ *//
+
+//*     ----->     ----->     Example 11 - Подія change - Події елементів форм
+//===================================================
+console.log(`____________________`);
+console.log(`Example 11 :`);
+
+const select = document.querySelector(".pizza-select");
+const textOutput = document.querySelector(".text-output");
+const valueOutput = document.querySelector(".value-output");
+
+setOutput();
+
+select.addEventListener("change", setOutput);
+
+function setOutput() {
+  const selectedOptionValue = select.value;
+  const selectedOptionIndex = select.selectedIndex;
+  const selectedOptionText = select.options[selectedOptionIndex].text;
+   
+  textOutput.textContent = selectedOptionText;
+  valueOutput.textContent = selectedOptionValue;
+};
+
+// //* _________________________________________________________ *//
+
+//*     ----->     ----->     Example 12 - Подія focus і blur - Події елементів форм
+//===================================================
+console.log(`____________________`);
+console.log(`Example 12 :`);
+
+const textInput12 = document.querySelector(".text-input-12");
+const setFocusBtn = document.querySelector(`[data-action="set"]`);
+const removeFocusBtn = document.querySelector(`[data-action="remove"]`);
+
+setFocusBtn.addEventListener("click", (event) => {
+  event.preventDefault();
+  textInput12.focus();
+});
+
+removeFocusBtn.addEventListener("click", (event) => {
+  event.preventDefault();
+  textInput12.blur();
+});
+
+textInput12.addEventListener("focus", () => {
+  textInput12.value = "This input has focus"
+});
+
+textInput12.addEventListener("blur", () => {
+  textInput12.value = ""
+});
+
+
+// const textInput = document.querySelector(".text-input");
+// const setFocusBtn = document.querySelector('[data-action="set"]');
+// const removeFocusBtn = document.querySelector('[data-action="remove"]');
+
+// setFocusBtn.addEventListener("click", () => {
+//   textInput.focus();
+// });
+
+// removeFocusBtn.addEventListener("click", () => {
+//   textInput.blur();
+// });
+
+// textInput.addEventListener("focus", () => {
+//   textInput.value = "This input has focus";
+// });
+
+// textInput.addEventListener("blur", () => {
+//   textInput.value = ""
+// });
