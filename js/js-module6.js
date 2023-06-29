@@ -137,6 +137,60 @@ dishes.forEach((dish) => {
 // //* _________________________________________________________ *//
 
 //*     ----->     ----->     Example 7 - 
+// Створити кілька кнопок на основі масива з обєктами використовуючи createElement
 //===================================================
 console.log(`____________________`);
 console.log(`Example 7 :`);
+
+
+const colors = [
+  {
+    label: "red",
+    color: "#FF0000",
+  },
+  {
+    label: "green",
+    color: "#00FF00",
+  },
+  {
+    label: "blue",
+    color: "#0000FF",
+  },
+  {
+    label: "yellow",
+    color: "#FFFF00",
+  },
+];
+
+// const btnElementsArr = colors.map((buttonData) => {
+//   const btnElement = document.createElement('button');
+//   btnElement.textContent = buttonData.label;
+//   btnElement.style.color = buttonData.color;
+//   const containerElement = document.createElement('div');
+//   containerElement.append(btnElement);
+//   containerElement.style.marginBottom = '10px';
+//   return containerElement;
+// })
+// console.log(btnElementsArr);
+// document.body.append(...btnElementsArr);
+
+// //* _________________________________________________________ *//
+
+//*     ----->     ----->     Example 8 - xxx
+// Створити список технологій що вивчаються на курсі Fullstack за допомогою js
+//===================================================
+console.log(`____________________`);
+console.log(`Example 8 :`);
+
+
+const list = document.querySelector(".list");
+
+const technologies = ["HTML", "CSS", "JavaScript", "React", "Node"];
+const itemsArr = technologies.map((technology) => {
+    return `<li>${technology}</li>`;
+});
+console.log(itemsArr);
+const listElement = `<ul>${itemsArr.join("")}</ul>`;
+document.ol.insertAdjacentHTML("beforeend", listElement);
+// document.body.insertAdjacentHTML('beforeend', listElement);
+
