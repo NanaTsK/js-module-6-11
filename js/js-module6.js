@@ -111,6 +111,7 @@ console.log(image1.hasAttribute("src")); // true
 console.log(image1.getAttribute("alt")); // Beautiful nature
 
 image1.setAttribute("alt", "Amazing nature");
+// або image1.alt = "Amazing nature";
 
 console.log(image1.getAttribute("alt")); // Amazing nature
 
@@ -226,13 +227,15 @@ function handleSubmit(event) {
   event.preventDefault();
   const {elements: {login, password}
   } = event.currentTarget;
-
   if (login.value === "" || password.value === "") {
     return console.log("Please fill in all the fields!");
   } 
   console.log(`Login: ${login.value}, Password: ${password.value}`);
   event.currentTarget.reset();
+
 };
+
+
 
 // //* _________________________________________________________ *//
 
@@ -307,3 +310,26 @@ textInput12.addEventListener("blur", () => {
 // textInput.addEventListener("blur", () => {
 //   textInput.value = ""
 // });
+
+// //* _________________________________________________________ *//
+
+//*     ----->     ----->     Example 13 - Подія focus і blur - Події елементів форм
+//===================================================
+console.log(`____________________`);
+console.log(`Example 13 :`);
+
+const navEl = document.querySelector(".site-nav");
+console.log(navEl);
+console.log(navEl.children.length);
+
+
+const firstNavEl = navEl.firstElementChild;
+console.log(firstNavEl);
+console.log(firstNavEl.innerText);
+console.log(firstNavEl.nextElementSibling.innerText);
+console.log(firstNavEl.parentNode);
+
+
+
+
+
