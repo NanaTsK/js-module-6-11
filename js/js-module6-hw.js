@@ -40,7 +40,7 @@ const ingredients = [
 
 // menuIngredients.append(...ingredientItems);
 
-//* and better:
+//* and better - function
 
 const menuIngredients = document.getElementById("ingredients");
 
