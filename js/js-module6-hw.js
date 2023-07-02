@@ -82,6 +82,7 @@ menuIngredients.append(...elements);
 const textInput = document.querySelector("#name-input");
 const textOutput = document.querySelector("#name-output");
 
+
 //* basic:
 textInput.addEventListener("input", (event) => {
   textOutput.textContent = event.currentTarget.value
@@ -120,49 +121,65 @@ textInput.addEventListener("input", (textInput) => {
 
 // //* _________________________________________________________ *//
 
-//*     ----->     ----->     Example 7 - xxx
+//*     ----->     ----->     Task 7 
 //===================================================
 
+const slider = document.querySelector("#font-size-control");
 
+slider.addEventListener("input", () => {
+    const elemSize = slider.value;
+    text.style.fontSize = elemSize + "px";
+})
 
 // //* _________________________________________________________ *//
 
 //*     ----->     ----->     Task 8
 //===================================================
 
-
 const loginForm = document.querySelector(".login-form");
 loginForm.addEventListener("submit", handleSubmit);
-
-
 
 function handleSubmit(event) {
     event.preventDefault();
 
-    // let login = {
-    //     email: email.value,
-    //     password: password.value,
-    // }
-
     const {elements: {email, password}} = event.currentTarget;
     if (email.value === "" || password.value === "") {
-        alert(`Please fill out all the required fields`);
+      
+        return alert(`Please fill out all the fields`);
+        // return;
     }
-    // console.log(login);
+           const loginObj = {
+        email: email.value,
+        password: password.value,
+    }
+    console.log(loginObj);
     event.currentTarget.reset();
 };
 
 
-
-
 // //* _________________________________________________________ *//
 
-//*     ----->     ----->     Example 9 - xxx
+//*     ----->     ----->     Task 9 
 //===================================================
 
+function getRandomHexColor() {
+  return `#${Math.floor(Math.random() * 16777215)
+    .toString(16)
+    .padStart(6, 0)}`;
+}
+const body = document.querySelector("body");
+// console.dir(body);
+const changeColorBtn = document.querySelector(".change-color");
+const currentColor = document.querySelector(".color");
 
+changeColorBtn.addEventListener("click", changeColor);
+function changeColor() { 
+  const randomColor = getRandomHexColor();
+  body.style.backgroundColor = randomColor;
+  currentColor.textContent = randomColor;
+}
 
 // //* _________________________________________________________ *//
 
-//*     ----->     ----->     Example 10 - xxx
+//*     ----->     ----->     Task 10 
 //===================================================

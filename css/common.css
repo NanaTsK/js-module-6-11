@@ -48,3 +48,40 @@ button {
   margin-right: 2px;
   margin-left: 2px;
 }
+
+.login-form {
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+}
+
+.login-form label {
+  margin-bottom: 16px;
+}
+
+.login-form input,
+.login-form button {
+  width: 100%;
+  padding: 4px;
+  font: inherit;
+}
+
+.widget {
+  text-align: center;
+}
+
+.widget p {
+  margin-top: 0;
+  margin-bottom: 16px;
+  font-size: 48px;
+}
+
+.widget span {
+  font-family: monospace;
+}
+
+.widget button {
+  padding: 8px 12px;
+  font-size: 20px;
+  cursor: pointer;
+}
