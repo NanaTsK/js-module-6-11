@@ -3,7 +3,17 @@
 //*     ----->     ----->     Task 1 
 //===================================================
 
+const categoriesList = document.getElementById("categories");
+const categoryItems = categoriesList.children;
+const itemsCount = categoriesList.children.length;
+console.log(`Number of categories: ${itemsCount}`);
 
+Array.from(categoryItems).forEach(category => {
+  const categoryName = category.firstElementChild.textContent; 
+  const categoryElements = category.lastElementChild.children.length;
+  console.log(`Category: ${categoryName}`);
+  console.log(`Elements: ${categoryElements}`);
+});
 
 // //* _________________________________________________________ *//
 
@@ -59,17 +69,58 @@ menuIngredients.append(...elements);
 
 // //* _________________________________________________________ *//
 
-//*     ----->     ----->     Example 3 - xxx
+//*     ----->     ----->     Task 3 
 //===================================================
 
+const images = [
+  {
+    url: 'https://images.pexels.com/photos/140134/pexels-photo-140134.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+    alt: 'White and Black Long Fur Cat',
+  },
+  {
+    url: 'https://images.pexels.com/photos/213399/pexels-photo-213399.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+    alt: 'Orange and White Koi Fish Near Yellow Koi Fish',
+  },
+  {
+    url: 'https://images.pexels.com/photos/219943/pexels-photo-219943.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+    alt: 'Group of Horses Running',
+  },
+];
+
+const galeryList = document.querySelector(".gallery");
+
+const imagesArr = images
+  .map(({url, alt}) =>
+    `<li><img src="${url}" alt="${alt}" class="img"></li>`)
+  .join("");
+
+  galeryList.insertAdjacentHTML("beforeend", imagesArr);
 
 
 // //* _________________________________________________________ *//
 
-//*     ----->     ----->     Example 4 - xxx
+//*     ----->     ----->     Task 4 
 //===================================================
 
+let counterValue = 0;
 
+const incrementBtn = document.querySelector('button[data-action="increment"]');
+const decrementBtn = document.querySelector('button[data-action="decrement"]');
+const counterEl = document.querySelector("#value");
+
+incrementBtn.addEventListener("click", incrementClick);
+
+function incrementClick() {
+    counterValue += 1;
+    counterEl.textContent = counterValue;
+};
+
+decrementBtn.addEventListener("click", decrementClick);
+
+function decrementClick() {
+    counterValue -= 1;
+    counterEl.textContent = counterValue;
+};
 
 // //* _________________________________________________________ *//
 
@@ -114,10 +165,26 @@ textInput.addEventListener("input", (textInput) => {
 
 // //* _________________________________________________________ *//
 
-//*     ----->     ----->     Example 6 - xxx
+//*     ----->     ----->     Task 6
 //===================================================
 
+const inputEl = document.querySelector("#validation-input");
 
+inputEl.addEventListener("blur", () => {
+    const inputLength = inputEl.value.length;
+    const inputSetLength = Number(inputEl.dataset.length);
+
+    if (inputLength === inputSetLength) {
+        inputEl.classList.remove("invalid");
+        inputEl.classList.add("valid");
+    } else if (inputLength === 0) {
+        inputEl.classList.remove("valid", "invalid");
+    } else {
+        inputEl.classList.add("invalid");
+        inputEl.classList.remove("valid")}
+
+    console.log(inputLength)   
+});
 
 // //* _________________________________________________________ *//
 
@@ -130,6 +197,14 @@ slider.addEventListener("input", () => {
     const elemSize = slider.value;
     text.style.fontSize = elemSize + "px";
 })
+
+//* або
+// const inputEl = document.querySelector("#font-size-control");
+// const inputTextEl = document.querySelector("#text");
+// function handleInput() {
+//   inputTextEl.style.fontSize = `${inputEl.value}px`;
+// }
+// inputEl.addEventListener("input", handleInput);
 
 // //* _________________________________________________________ *//
 
@@ -156,7 +231,6 @@ function handleSubmit(event) {
     event.currentTarget.reset();
 };
 
-
 // //* _________________________________________________________ *//
 
 //*     ----->     ----->     Task 9 
@@ -167,7 +241,10 @@ function getRandomHexColor() {
     .toString(16)
     .padStart(6, 0)}`;
 }
+
+
 const body = document.querySelector("body");
+const widget = document.querySelector(".widget");
 // console.dir(body);
 const changeColorBtn = document.querySelector(".change-color");
 const currentColor = document.querySelector(".color");
@@ -176,6 +253,7 @@ changeColorBtn.addEventListener("click", changeColor);
 function changeColor() { 
   const randomColor = getRandomHexColor();
   body.style.backgroundColor = randomColor;
+  // widget.style.backgroundColor = randomColor;
   currentColor.textContent = randomColor;
 }
 
@@ -183,3 +261,9 @@ function changeColor() {
 
 //*     ----->     ----->     Task 10 
 //===================================================
+
+function getRandomHexColor() {
+  return `#${Math.floor(Math.random() * 16777215)
+    .toString(16)
+    .padStart(6, 0)}`;
+}
