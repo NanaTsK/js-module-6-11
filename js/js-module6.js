@@ -362,3 +362,91 @@ const createColorPickerOptions = (options) => {
 const elements = createColorPickerOptions(colorPickerOptions);
 colorPickerContainerEl.append(...elements);
 
+// //* _________________________________________________________ *//
+
+//*     ----->     ----->     Example 15 - Створити кілька кнопок на основі 
+//*                                      масива з обєктами використовуючи createElement
+//===================================================
+console.log(`____________________`);
+console.log(`Example 15 :`);
+
+// const colors15 = [
+//   {
+//     label: "red",
+//     color: "#FF0000",
+//   },
+//   {
+//     label: "green",
+//     color: "#00FF00",
+//   },
+//   {
+//     label: "blue",
+//     color: "#0000FF",
+//   },
+//   {
+//     label: "yellow",
+//     color: "#FFFF00",
+//   },
+// ];
+
+// const btnElementsArr = colors.map((buttonData) => {
+//   const btnElement = document.createElement('button');
+//   btnElement.textContent = buttonData.label;
+//   btnElement.style.color = buttonData.color;
+//   const containerElement = document.createElement('div');
+//   containerElement.append(btnElement);
+//   containerElement.style.marginBottom = '10px';
+//   return containerElement;
+// })
+// console.log(btnElementsArr);
+// document.body.append(...btnElementsArr);
+
+// //* _________________________________________________________ *//
+
+//*     ----->     ----->     Example 16                                
+//===================================================
+console.log(`____________________`);
+console.log(`Example 16 :`);
+
+function getRandomHexColor() {
+  return `#${Math.floor(Math.random() * 16777215)
+    .toString(16)
+    .padStart(6, 0)}`;
+}
+const boxesEl = document.querySelector("#boxes");
+const inputEl = document.querySelector("#controls input");
+const createBtnEl = document.querySelector("button[data-create]");
+const destroyBtnEl = document.querySelector("button[data-destroy]");
+
+inputEl.addEventListener("input", onGetAmount);
+createBtnEl.addEventListener("click", onCreateBtn);
+destroyBtnEl.addEventListener("click", destroyBoxes);
+
+function onGetAmount(event) {
+  createBtnEl.value = event.currentTarget.value;
+}
+function onCreateBtn() {
+  createBoxes(createBtnEl.value);
+}
+function createBoxes(amount) {
+  let boxArray = [];
+  let boxSize = 30;
+
+  // let boxSize = 30;
+  // const boxArray = [];
+
+  for (let i = 0; i < amount; i += 1) {
+    const boxEl = document.createElement("div");
+    //  boxEl.classList.add("box");
+    boxEl.style.backgroundColor = getRandomHexColor();
+    boxEl.style.width = `${boxSize}px`;
+    boxEl.style.height = `${boxSize}px`;
+    boxSize += 10;
+    boxArray.push(boxEl);
+  }
+  boxesEl.append(...boxArray);
+}
+function destroyBoxes() {
+  inputEl.value = "";
+  boxesEl.innerHTML = "";
+}
