@@ -189,22 +189,71 @@ inputEl.addEventListener("blur", () => {
 // //* _________________________________________________________ *//
 
 //*     ----->     ----->     Task 7 
+
+// const slider = document.querySelector("#font-size-control");
+
+// slider.addEventListener("input", () => {
+//     const elemSize = slider.value;
+//     text.style.fontSize = elemSize + "px";
+// })
 //===================================================
 
+// const inputValueEl = document.querySelector("#font-size-control");
+// const textEl = document.querySelector("#text");
+// inputValueEl.addEventListener('input', () => {
+//   const fontSize = inputValueEl.value + 'px';
+//   textEl.style.fontSize = fontSize;
+// });
+// // Синхронізація розміру тексту з положенням ползунка
+// const initialFontSize = inputValueEl.value + 'px';
+// textEl.style.fontSize = initialFontSize;
+
+//* -------------------
 const slider = document.querySelector("#font-size-control");
+const inputTextEl = document.querySelector("#text");
 
 slider.addEventListener("input", () => {
-    const elemSize = slider.value;
-    text.style.fontSize = elemSize + "px";
-})
+  const elemSize = slider.value;
+  inputTextEl.style.fontSize = elemSize + "px";
+});
 
-//* або
-// const inputEl = document.querySelector("#font-size-control");
+const initialElemSize = slider.value;
+inputTextEl.style.fontSize = initialElemSize + "px";
+
+
+
+//* -------------------
+//* starting with middle value for text size:
+// const slider = document.querySelector("#font-size-control");
 // const inputTextEl = document.querySelector("#text");
+
 // function handleInput() {
-//   inputTextEl.style.fontSize = `${inputEl.value}px`;
+//   const elemSize = slider.value;
+//   inputTextEl.style.fontSize = `${elemSize}px`;
+// }
+
+// slider.addEventListener("input", handleInput);
+
+// slider.value = (parseInt(slider.min) + parseInt(slider.max)) / 2;
+// handleInput();
+
+//* -------------------
+//* або
+// const slider = document.querySelector("#font-size-control");
+// const inputTextEl = document.querySelector("#text");
+
+// function handleInput() {
+//   inputTextEl.style.fontSize = `${slider.value}px`;
 // }
 // inputEl.addEventListener("input", handleInput);
+
+//* -------------------
+//*
+// const slider = document.getElementById("font-size-control");
+// const textEl = document.getElementById("text");
+// inputEl.addEventListener("input", function () {
+//   textEl.style.fontSize = slider.value + "px";
+// });
 
 // //* _________________________________________________________ *//
 
