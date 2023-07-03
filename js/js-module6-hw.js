@@ -168,23 +168,23 @@ textInput.addEventListener("input", (textInput) => {
 //*     ----->     ----->     Task 6
 //===================================================
 
-const inputEl = document.querySelector("#validation-input");
+// const inputEl6 = document.querySelector("#validation-input");
 
-inputEl.addEventListener("blur", () => {
-    const inputLength = inputEl.value.length;
-    const inputSetLength = Number(inputEl.dataset.length);
+// inputEl6.addEventListener("blur", () => {
+//     const inputLength = inputEl6.value.length;
+//     const inputSetLength = Number(inputEl6.dataset.length);
 
-    if (inputLength === inputSetLength) {
-        inputEl.classList.remove("invalid");
-        inputEl.classList.add("valid");
-    } else if (inputLength === 0) {
-        inputEl.classList.remove("valid", "invalid");
-    } else {
-        inputEl.classList.add("invalid");
-        inputEl.classList.remove("valid")}
+//     if (inputLength === inputSetLength) {
+//         inputEl6.classList.remove("invalid");
+//         inputEl6.classList.add("valid");
+//     } else if (inputLength === 0) {
+//         inputEl6.classList.remove("valid", "invalid");
+//     } else {
+//         inputEl6.classList.add("invalid");
+//         inputEl6.classList.remove("valid")}
 
-    console.log(inputLength)   
-});
+//     console.log(inputLength)   
+// });
 
 // //* _________________________________________________________ *//
 
@@ -317,12 +317,12 @@ function getRandomHexColor() {
     .padStart(6, 0)}`;
 }
 
-const inputNumEl = document.querySelector("#controls input");
+const inputEl = document.querySelector("#controls input");
 const createBtnEl = document.querySelector("button[data-create]");
 const destroyBtnEl = document.querySelector("button[data-destroy]");
 const boxesEl = document.querySelector("#boxes");
 
-inputNumEl.addEventListener("input", onGetNumber);
+inputEl.addEventListener("input", onGetNumber);
 createBtnEl.addEventListener("click", onCreate);
 destroyBtnEl.addEventListener("click", clearBoxes);
 
@@ -347,13 +347,40 @@ function createBoxes(amount) {
     boxEl.style.backgroundColor = getRandomHexColor(); 
     boxSize += 10; 
     boxesArr.push(boxEl);
-  }
+    }
   }
   boxesEl.append(...boxesArr)
 };
 
 function clearBoxes() { 
   boxesEl.innerHTML = "";
-  inputNumEl.value = "";
+  inputEl.value = "";
   createBtnEl.value = "";
 };
+
+//* або
+
+// const btnCreateEl = document.querySelector(`[data-create]`);
+// const btnDestroyEl = document.querySelector(`[data-destroy]`);
+// const amountEl = document.querySelector("input");
+// const boxesEl = document.querySelector("#boxes");
+// btnCreateEl.addEventListener("click", createBoxes);
+// btnDestroyEl.addEventListener("click", destroyBoxes);
+// let boxesArray = [];
+// function createBoxes(amount) {
+//   amount = amountEl.value;
+//   let widthEl = 20;
+//   for (let i = 1; i <= amount; i++) {
+//     const randomColor = getRandomHexColor();
+//     widthEl += 10;
+//     const box = `<div style="background-color: ${randomColor}; height: ${widthEl}px; width: ${widthEl}px; margin-bottom: 5px"></div>`;
+//     boxesArray.push(box);
+//   }
+//   const boxesStr = boxesArray.join("");
+//   boxesEl.innerHTML = boxesStr;
+// }
+// function destroyBoxes() {
+//   boxesEl.innerHTML = "";
+//   boxesArray = [];
+//   amountEl.value = 0;
+// }
