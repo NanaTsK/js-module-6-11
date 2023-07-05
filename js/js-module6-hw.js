@@ -134,32 +134,32 @@ const textInput = document.querySelector("#name-input");
 const textOutput = document.querySelector("#name-output");
 
 
-//* basic:
-textInput.addEventListener("input", (event) => {
-  textOutput.textContent = event.currentTarget.value
-});
+// //* basic:
+// textInput.addEventListener("input", (event) => {
+//   textOutput.textContent = event.currentTarget.value
+// });
 
-//* option 1:
-textInput.addEventListener("input", (event) => {
-    const inputValue = event.currentTarget.value;
-    if (inputValue === "") {
-      textOutput.textContent = "Anonymous";
-    } else {textOutput.textContent = inputValue;}
-  });
+// //* option 1:
+// textInput.addEventListener("input", (event) => {
+//     const inputValue = event.currentTarget.value;
+//     if (inputValue === "") {
+//       textOutput.textContent = "Anonymous";
+//     } else {textOutput.textContent = inputValue;}
+//   });
 
-//* option 2:
-textInput.addEventListener("input", (event) => {
-    if (event.currentTarget.value === "") {
-      textOutput.textContent = "Anonymous";
-    } else {textOutput.textContent = event.currentTarget.value;}
-  });
+// //* option 2:
+// textInput.addEventListener("input", (event) => {
+//     if (event.currentTarget.value === "") {
+//       textOutput.textContent = "Anonymous";
+//     } else {textOutput.textContent = event.currentTarget.value;}
+//   });
 
 //* option 3:
 
 textInput.addEventListener("input", (textInput) => {
-    textInput.currentTarget.value === "" ? 
+    textInput.currentTarget.value.trim() === "" ? 
     textOutput.textContent = "Anonymous"  
-    : textOutput.textContent = textInput.currentTarget.value
+    : textOutput.textContent = textInput.currentTarget.value.trim()
   });
 
 
@@ -168,23 +168,23 @@ textInput.addEventListener("input", (textInput) => {
 //*     ----->     ----->     Task 6
 //===================================================
 
-// const inputEl6 = document.querySelector("#validation-input");
+const inputElem = document.querySelector("#validation-input");
 
-// inputEl6.addEventListener("blur", () => {
-//     const inputLength = inputEl6.value.length;
-//     const inputSetLength = Number(inputEl6.dataset.length);
+inputElem.addEventListener("blur", () => {
+  const inputLength = inputElem.value.trim().length;
+    const inputSetLength = Number(inputElem.dataset.length);
 
-//     if (inputLength === inputSetLength) {
-//         inputEl6.classList.remove("invalid");
-//         inputEl6.classList.add("valid");
-//     } else if (inputLength === 0) {
-//         inputEl6.classList.remove("valid", "invalid");
-//     } else {
-//         inputEl6.classList.add("invalid");
-//         inputEl6.classList.remove("valid")}
+    if (inputLength === inputSetLength) {
+        inputElem.classList.remove("invalid");
+        inputElem.classList.add("valid");
+    } else if (inputLength === 0) {
+        inputElem.classList.remove("valid", "invalid");
+    } else {
+        inputElem.classList.add("invalid");
+        inputElem.classList.remove("valid")}
 
-//     console.log(inputLength)   
-// });
+    console.log(inputLength)   
+});
 
 // //* _________________________________________________________ *//
 
@@ -311,52 +311,52 @@ function changeColor() {
 //*     ----->     ----->     Task 10 
 //===================================================
 
-function getRandomHexColor() {
-  return `#${Math.floor(Math.random() * 16777215)
-    .toString(16)
-    .padStart(6, 0)}`;
-}
+// function getRandomHexColor() {
+//   return `#${Math.floor(Math.random() * 16777215)
+//     .toString(16)
+//     .padStart(6, 0)}`;
+// }
 
-const inputEl = document.querySelector("#controls input");
-const createBtnEl = document.querySelector("button[data-create]");
-const destroyBtnEl = document.querySelector("button[data-destroy]");
-const boxesEl = document.querySelector("#boxes");
+// const inputEl = document.querySelector("#controls input");
+// const createBtnEl = document.querySelector("button[data-create]");
+// const destroyBtnEl = document.querySelector("button[data-destroy]");
+// const boxesEl = document.querySelector("#boxes");
 
-inputEl.addEventListener("input", onGetNumber);
-createBtnEl.addEventListener("click", onCreate);
-destroyBtnEl.addEventListener("click", clearBoxes);
+// inputEl.addEventListener("input", onGetNumber);
+// createBtnEl.addEventListener("click", onCreate);
+// destroyBtnEl.addEventListener("click", clearBoxes);
 
-function onGetNumber(event) { 
-createBtnEl.value = event.currentTarget.value
-};
+// function onGetNumber(event) { 
+// createBtnEl.value = event.currentTarget.value
+// };
 
-function onCreate() { 
-  createBoxes(createBtnEl.value) 
-};
+// function onCreate() { 
+//   createBoxes(createBtnEl.value) 
+// };
 
-function createBoxes(amount) { 
-  let boxSize = 30;
-  const boxesArr = [];
+// function createBoxes(amount) { 
+//   let boxSize = 30;
+//   const boxesArr = [];
 
-  if (amount > 0) {
-    for (let i = 0; i < amount; i += 1) {
-    const boxEl = document.createElement("div");
+//   if (amount > 0) {
+//     for (let i = 0; i < amount; i += 1) {
+//     const boxEl = document.createElement("div");
 
-    boxEl.style.width = `${boxSize}px`;
-    boxEl.style.height = `${boxSize}px`;
-    boxEl.style.backgroundColor = getRandomHexColor(); 
-    boxSize += 10; 
-    boxesArr.push(boxEl);
-    }
-  }
-  boxesEl.append(...boxesArr)
-};
+//     boxEl.style.width = `${boxSize}px`;
+//     boxEl.style.height = `${boxSize}px`;
+//     boxEl.style.backgroundColor = getRandomHexColor(); 
+//     boxSize += 10; 
+//     boxesArr.push(boxEl);
+//     }
+//   }
+//   boxesEl.append(...boxesArr)
+// };
 
-function clearBoxes() { 
-  boxesEl.innerHTML = "";
-  inputEl.value = "";
-  createBtnEl.value = "";
-};
+// function clearBoxes() { 
+//   boxesEl.innerHTML = "";
+//   inputEl.value = "";
+//   createBtnEl.value = "";
+// };
 
 //* або
 
