@@ -130,8 +130,8 @@ function decrementClick() {
 //у спані повинен відображатися рядок "Anonymous".
 //===================================================
 
-const textInput = document.querySelector("#name-input");
-const textOutput = document.querySelector("#name-output");
+// const textInput = document.querySelector("#name-input");
+// const textOutput = document.querySelector("#name-output");
 
 
 // //* basic:
@@ -154,13 +154,13 @@ const textOutput = document.querySelector("#name-output");
 //     } else {textOutput.textContent = event.currentTarget.value;}
 //   });
 
-//* option 3:
+//* option 3 = better:
 
-textInput.addEventListener("input", (textInput) => {
-    textInput.currentTarget.value.trim() === "" ? 
-    textOutput.textContent = "Anonymous"  
-    : textOutput.textContent = textInput.currentTarget.value.trim()
-  });
+// textInput.addEventListener("input", (textInput) => {
+//     textInput.currentTarget.value.trim() === "" ? 
+//     textOutput.textContent = "Anonymous"  
+//     : textOutput.textContent = textInput.currentTarget.value.trim()
+//   });
 
 
 // //* _________________________________________________________ *//
@@ -168,23 +168,23 @@ textInput.addEventListener("input", (textInput) => {
 //*     ----->     ----->     Task 6
 //===================================================
 
-const inputElem = document.querySelector("#validation-input");
+// const inputElem = document.querySelector("#validation-input");
 
-inputElem.addEventListener("blur", () => {
-  const inputLength = inputElem.value.trim().length;
-    const inputSetLength = Number(inputElem.dataset.length);
+// inputElem.addEventListener("blur", () => {
+//   const inputLength = inputElem.value.trim().length;
+//     const inputSetLength = Number(inputElem.dataset.length);
 
-    if (inputLength === inputSetLength) {
-        inputElem.classList.remove("invalid");
-        inputElem.classList.add("valid");
-    } else if (inputLength === 0) {
-        inputElem.classList.remove("valid", "invalid");
-    } else {
-        inputElem.classList.add("invalid");
-        inputElem.classList.remove("valid")}
+//     if (inputLength === inputSetLength) {
+//         inputElem.classList.remove("invalid");
+//         inputElem.classList.add("valid");
+//     } else if (inputLength === 0) {
+//         inputElem.classList.remove("valid", "invalid");
+//     } else {
+//         inputElem.classList.add("invalid");
+//         inputElem.classList.remove("valid")}
 
-    console.log(inputLength)   
-});
+//     console.log(inputLength)   
+// });
 
 // //* _________________________________________________________ *//
 
@@ -311,11 +311,11 @@ function changeColor() {
 //*     ----->     ----->     Task 10 
 //===================================================
 
-// function getRandomHexColor() {
-//   return `#${Math.floor(Math.random() * 16777215)
-//     .toString(16)
-//     .padStart(6, 0)}`;
-// }
+function getRandomHexColor() {
+  return `#${Math.floor(Math.random() * 16777215)
+    .toString(16)
+    .padStart(6, 0)}`;
+}
 
 // const inputEl = document.querySelector("#controls input");
 // const createBtnEl = document.querySelector("button[data-create]");
@@ -357,6 +357,61 @@ function changeColor() {
 //   inputEl.value = "";
 //   createBtnEl.value = "";
 // };
+
+//* -------------
+
+const inputEl = document.querySelector("#controls input");
+const createBtnEl = document.querySelector("button[data-create]");
+const destroyBtnEl = document.querySelector("button[data-destroy]");
+const boxesEl = document.querySelector("#boxes");
+
+const min = Number(inputEl.getAttribute("min"));
+const max = Number(inputEl.getAttribute("max"));
+const step = Number(inputEl.getAttribute("step"));
+
+inputEl.addEventListener("input", onGetNumber);
+createBtnEl.addEventListener("click", onCreate);
+destroyBtnEl.addEventListener("click", clearBoxes);
+
+function onGetNumber(event) { 
+  createBtnEl.value = event.currentTarget.value;
+}
+
+function onCreate() { 
+  const value = Number(createBtnEl.value);
+  if (value < min || value > max) {
+    alert(`Value must be a number between ${min} and ${max}`);
+    return;
+  }
+  createBoxes(value);
+}
+
+function createBoxes(amount) { 
+  let boxSize = 30;
+  const boxesArr = [];
+
+  if (amount > 0) {
+    for (let i = 0; i < amount; i += step) {
+      const boxEl = document.createElement("div");
+
+      boxEl.style.width = `${boxSize}px`;
+      boxEl.style.height = `${boxSize}px`;
+      boxEl.style.backgroundColor = getRandomHexColor(); 
+      boxSize += 10; 
+      boxesArr.push(boxEl);
+    }
+  }
+  boxesEl.append(...boxesArr);
+}
+
+function clearBoxes() { 
+  boxesEl.innerHTML = "";
+  inputEl.value = "";
+  createBtnEl.value = "";
+}
+
+
+//*--------------
 
 //* або
 
