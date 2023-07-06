@@ -1,3 +1,5 @@
+import products from "./data/products.js";
+
 // const listWithId = document.querySelector('#menu');
 // listWithId.style.textTransform = 'uppercase';
 // listWithId.style.fontSize = '24px';
@@ -164,17 +166,19 @@ const colors = [
   },
 ];
 
-// const btnElementsArr = colors.map((buttonData) => {
-//   const btnElement = document.createElement('button');
-//   btnElement.textContent = buttonData.label;
-//   btnElement.style.color = buttonData.color;
-//   const containerElement = document.createElement('div');
-//   containerElement.append(btnElement);
-//   containerElement.style.marginBottom = '10px';
-//   return containerElement;
-// })
-// console.log(btnElementsArr);
-// document.body.append(...btnElementsArr);
+const btnElementsArr = colors.map((buttonData) => {
+  const btnElement = document.createElement('button');
+  btnElement.textContent = buttonData.label;
+  btnElement.style.color = buttonData.color;
+  const containerElement = document.createElement('div');
+  containerElement.append(btnElement);
+  containerElement.style.marginBottom = '10px';
+  return containerElement;
+})
+console.log(btnElementsArr);
+
+const colorButtonsEl = document.querySelector(".color-buttons");
+colorButtonsEl.append(...btnElementsArr);
 
 // //* _________________________________________________________ *//
 
@@ -413,40 +417,168 @@ function getRandomHexColor() {
     .toString(16)
     .padStart(6, 0)}`;
 }
-const boxesEl = document.querySelector("#boxes");
 const inputEl = document.querySelector("#controls input");
 const createBtnEl = document.querySelector("button[data-create]");
 const destroyBtnEl = document.querySelector("button[data-destroy]");
+const boxesEl = document.querySelector("#boxes");
 
-inputEl.addEventListener("input", onGetAmount);
-createBtnEl.addEventListener("click", onCreateBtn);
-destroyBtnEl.addEventListener("click", destroyBoxes);
+const min = Number(inputEl.getAttribute("min"));
+const max = Number(inputEl.getAttribute("max"));
+const step = Number(inputEl.getAttribute("step"));
 
-function onGetAmount(event) {
+inputEl.addEventListener("input", onGetNumber);
+createBtnEl.addEventListener("click", onCreate);
+destroyBtnEl.addEventListener("click", clearBoxes);
+
+function onGetNumber(event) { 
   createBtnEl.value = event.currentTarget.value;
 }
-function onCreateBtn() {
-  createBoxes(createBtnEl.value);
-}
-function createBoxes(amount) {
-  let boxArray = [];
-  let boxSize = 30;
 
-  // let boxSize = 30;
-  // const boxArray = [];
-
-  for (let i = 0; i < amount; i += 1) {
-    const boxEl = document.createElement("div");
-    //  boxEl.classList.add("box");
-    boxEl.style.backgroundColor = getRandomHexColor();
-    boxEl.style.width = `${boxSize}px`;
-    boxEl.style.height = `${boxSize}px`;
-    boxSize += 10;
-    boxArray.push(boxEl);
+function onCreate() { 
+  const value = Number(createBtnEl.value);
+  if (value < min || value > max) {
+    alert(`Value must be a number between ${min} and ${max}`);
+    return;
   }
-  boxesEl.append(...boxArray);
+  createBoxes(value);
 }
-function destroyBoxes() {
-  inputEl.value = "";
+
+function createBoxes(amount) { 
+  let boxSize = 30;
+  const boxesArr = [];
+
+  if (amount > 0) {
+    for (let i = 0; i < amount; i += step) {
+      const boxEl = document.createElement("div");
+
+      boxEl.style.width = `${boxSize}px`;
+      boxEl.style.height = `${boxSize}px`;
+      boxEl.style.backgroundColor = getRandomHexColor(); 
+      boxSize += 10; 
+      boxesArr.push(boxEl);
+    }
+  }
+  boxesEl.append(...boxesArr);
+}
+
+function clearBoxes() { 
   boxesEl.innerHTML = "";
+  inputEl.value = "";
+  createBtnEl.value = "";
 }
+// //* _________________________________________________________ *//
+
+//*     ----->     ----->     Example 17                                
+//===================================================
+console.log(`____________________`);
+console.log(`Example 17 :`);
+
+// создать и добавить new menu elements
+
+const newItemElExample = document.createElement("li");
+newItemElExample.classList.add("site-nav__itemExample");
+
+const newLinkElExample = document.createElement("a");
+newLinkElExample.classList.add("site-nav__linkExample");
+newLinkElExample.href = "/profile";
+newLinkElExample.textContent = "example";
+
+newItemElExample.appendChild(newLinkElExample);
+
+console.log(newItemElExample);
+console.log(newLinkElExample);
+
+const navElExample = document.querySelector(".site-navExample");
+// добавит в конце>
+// navElExample.appendChild(newItemElExample);
+
+// добавит в начале перед первым:
+// navElExample.insertBefore(newItemElExample, navElExample.firstElementChild);
+
+// добавит перед последним:
+navElExample.insertBefore(newItemElExample, navElExample.lastElementChild);
+
+
+console.log(navElExample);
+
+// //* _________________________________________________________ *//
+
+//*     ----->     ----->     Example 18                                
+//===================================================
+console.log(`____________________`);
+console.log(`Example 18 :`);
+
+// создать product card
+
+const product = {
+  name: "Servo",
+  description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam, enim.",
+  price: 2000,
+  available: true,
+  onSale: true,
+};
+
+const productEl = document.createElement("article");
+productEl.classList.add("product");
+
+const nameEl = document.createElement("h2");
+nameEl.classList.add("product__name");
+nameEl.textContent = product.name;
+
+const descrEl = document.createElement("p");
+descrEl.classList.add("product__descr");
+descrEl.textContent = product.description;
+
+const priceEl = document.createElement("p");
+priceEl.classList.add("product__price");
+priceEl.textContent = `Price: ${product.price} credits`;
+
+console.log(nameEl);
+console.log(descrEl);
+console.log(priceEl);
+
+productEl.append(nameEl, descrEl, priceEl);
+console.log(productEl);
+
+const prodCard = document.querySelector(".product-card");
+prodCard.append(productEl);
+console.log(prodCard);
+
+
+//*     ----->     ----->     Example 19                                
+//===================================================
+console.log(`____________________`);
+console.log(`Example 19 :`);
+
+// создать массив product cards from exported array
+// see 1st raw >> import products from "./data/products.js";
+
+const productsContainerEl = document.querySelector(".js-products");
+
+const makeProductCard = ({ name, description, price }) => { 
+
+const productElem = document.createElement("article");
+productElem.classList.add("product");
+
+const nameElem = document.createElement("h2");
+nameElem.classList.add("product__name");
+nameElem.textContent = name;
+
+const descrElem = document.createElement("p");
+descrElem.classList.add("product__descr");
+descrElem.textContent = description;
+
+const priceElem = document.createElement("p");
+priceElem.classList.add("product__price");
+priceElem.textContent = `Price: ${price} credits`;
+
+  productElem.append(nameElem, descrElem, priceElem);
+  
+  return productElem;
+};
+
+const elementsArr = products.map(makeProductCard);
+console.log(elementsArr);
+
+productsContainerEl.append(...elementsArr);
+
