@@ -1,4 +1,5 @@
 import products from "./data/products.js";
+import transactionHistory from "./data/transactions.js";
 
 // const listWithId = document.querySelector('#menu');
 // listWithId.style.textTransform = 'uppercase';
@@ -582,3 +583,66 @@ console.log(elementsArr);
 
 productsContainerEl.append(...elementsArr);
 
+//*     ----->     ----->     Example 20                                
+//===================================================
+console.log(`____________________`);
+console.log(`Example 20 :`);
+
+const titleEl = document.querySelector(".title");
+
+console.log(titleEl.textContent);
+//вернет только текстовий контент, без тега
+//This is my example title
+
+console.log(titleEl.innerHTML);
+//вернет всю вложенную разметку в виде строки
+//This is my <span>example title</span>
+
+titleEl.innerHTML = "";
+//очистить
+
+titleEl.innerHTML = "This is my <span>NEW <a href>title</a></span>";
+
+titleEl.insertAdjacentHTML("afterbegin", "WOW! ");
+titleEl.insertAdjacentHTML("beforeend", " !");
+
+//*     ----->     ----->     Example 21                                
+//===================================================
+console.log(`____________________`);
+console.log(`Example 21 :`);
+
+
+/* <thead>
+       <tr>
+         <th>Transaction ID</th>
+         <th>Amount</th>
+         <th>Date</th>
+         <th>Name</th>
+         <th>Type</th>
+        </tr>
+      </thead> */
+
+const makeTransactionTableRowMarkup = transaction => { 
+
+  const { id, amount, date, name, type } = transaction;
+  return `
+       <tr>
+         <td>${id}</td>
+         <td>${amount}</td>
+         <td>${date}</td>
+         <td>${name}</td>
+         <td>${type}</td>
+        </tr>
+     `;
+};
+
+console.log(transactionHistory);
+console.log(makeTransactionTableRowMarkup(transactionHistory[0]));
+
+const tableEl = document.querySelector(".js-transaction-table");
+
+const makeTransactionTableRow = transactionHistory.map(makeTransactionTableRowMarkup).join("");
+
+tableEl.insertAdjacentHTML("beforeend", makeTransactionTableRow);
+
+console.log(makeTransactionTableRow); 
