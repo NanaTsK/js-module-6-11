@@ -16,3 +16,5 @@ descendant.addEventListener("click", () => {
   alert("Descendant click handler");
 });
 
+
+console.log(`wow`);
