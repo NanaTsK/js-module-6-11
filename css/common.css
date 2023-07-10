@@ -152,3 +152,11 @@ h2 {
 #descendant {
   background-color: #ff9800;
 }
+
+.simple-box {
+  width: 150px;
+  height: 150px;
+  border: 1px solid black;
+  background-color: beige;
+  cursor: pointer;
+}
