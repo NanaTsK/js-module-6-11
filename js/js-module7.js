@@ -1,9 +1,9 @@
 import colors from "./data/colors.js";
 
-//*     ----->     ----->     Example 1                                
-//===================================================
-console.log(`____________________`);
-console.log(`Example 1 :`);
+// *     ----->     ----->     Example 1                                
+// ===================================================
+// console.log(`____________________`);
+// console.log(`Example 1 :`);
 
 const parent = document.querySelector("#parent");
 const child = document.querySelector("#child");
@@ -158,10 +158,11 @@ function onBodyClick(evt) {
 
 
 
-//*     ----->     ----->     Example xx                                
+//*     ----->     ----->     Example 4                                
 //===================================================
 console.log(`____________________`);
-console.log(`Example xx :`);
+console.log(`Example 4 :`);
+
 
 //*     ----->     ----->     Example xx                                
 //===================================================
