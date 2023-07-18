@@ -6,10 +6,10 @@ console.log(`Example 1 :`);
 // Will run first
 console.log("First log");
 
-setTimeout(() => {
-  // Will run last, after 2000 milliseconds
-  console.log("Second log");
-}, 2000);
+// setTimeout(() => {
+//   // Will run last, after 2000 milliseconds
+//   console.log("Second log");
+// }, 2000);
 
 // Will run second
 console.log("Third log");
@@ -62,3 +62,13 @@ console.log(`Example 2 :`);
 // ===================================================
 console.log(`____________________`);
 console.log(`Example 2 :`);
+
+const date = new Date();
+
+date.setMinutes(50);
+console.log(date);
+// "Sat Mar 16 2030 14:50:00 GMT+0200"
+
+date.setFullYear(2040, 4, 8);
+console.log(date);
+// "Tue May 08 2040 14:50:00 GMT+0300"
