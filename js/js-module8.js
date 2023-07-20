@@ -1,7 +1,7 @@
 // *     ----->     ----->     Example 1                                
 // ===================================================
-// console.log(`____________________`);
-// console.log(`Example 1 :`);
+console.log(`____________________`);
+console.log(`Example 1 :`);
 
 // add buyers in line to the checkout with curretly less buyers:
 
@@ -27,12 +27,25 @@ console.log(fn([12, 3, 5, 6, 2, 15, 7], 3));
 
 // *     ----->     ----->     Example 2                                
 // ===================================================
-// console.log(`____________________`);
-// console.log(`Example 1 :`);
+console.log(`____________________`);
+console.log(`Example 2 :`);
+
+const local = document.querySelector(".js-local");
+const session = document.querySelector(".js-session");
+
+local.addEventListener("click", () => {
+localStorage.setItem("local", "test local")
+});
+
+session.addEventListener("click", () => {
+sessionStorage.setItem("session", "test session")
+
+});
+
 
 
 // *     ----->     ----->     Example 3                                
 // ===================================================
 // console.log(`____________________`);
-// console.log(`Example 1 :`);
+// console.log(`Example 3 :`);
 
