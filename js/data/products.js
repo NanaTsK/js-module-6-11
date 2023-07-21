@@ -9,8 +9,8 @@ export default [
   onSale: true,
     },
   {
-    id: 2,
-      img: "http://placekitten.com/200/300",
+  id: 2,
+  img: "http://placekitten.com/200/300",
   name: "Servo-2",
   description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam, enim.",
   price: 1500,
@@ -18,8 +18,8 @@ export default [
   onSale: true,
     },
   {
-    id: 3,
-      img: "http://placekitten.com/200/300",
+  id: 3,
+  img: "http://placekitten.com/200/300",
   name: "Servo-3",
   description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam, enim.",
   price: 2500,
