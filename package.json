@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "babel-preset": "^1.1.7",
+    "bootstrap.native": "^5.0.9",
     "joi": "^17.9.2",
     "shortid": "^2.2.16"
   },
