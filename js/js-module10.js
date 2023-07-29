@@ -117,3 +117,56 @@ fetch(url, options)
 console.log(`____________________`);
 console.log(`Example 4 :`);
 
+// https://www.weatherapi.com
+// API Key: 1c9cb3dbb21c4924ae3110013232907
+// Base URL: http://api.weatherapi.com/v1
+//  /forecast.json
+
+// http://api.weatherapi.com/v1?key=1c9cb3dbb21c4924ae3110013232907&q=Paris&days=5
+
+const search = document.querySelector(".js-search");
+const list = document.querySelector(".js-list");
+
+search.addEventListener("submit", onCitySearch);
+
+function onCitySearch(evt) {
+  evt.preventDefault();
+
+  const { query, days } = evt.currentTarget.elements;
+
+  getWeather(query.value, days.value)
+  .then(data => list.innerHTML = createMarkup(data.forecast.forecastday))
+  .catch(err => console.log(err));
+}
+
+function getWeather(city, days) { 
+  const BASE_URL = "http://api.weatherapi.com/v1";
+  const API_KEY = "1c9cb3dbb21c4924ae3110013232907";
+
+  // const params = new URLSearchParams({
+  //   key: API_KEY,
+  //   q: city,
+  //   days: days
+  // })
+
+  //  return fetch(`${BASE_URL}/forecast.json?key=${params}`)
+//*або
+
+  return fetch(`${BASE_URL}/forecast.json?key=${API_KEY}&q=${city}&days=${days}`)
+    .then(resp => { 
+      if (!resp.ok) { 
+        throw new Error(resp.statusText)
+      }
+      return resp.json()
+    })
+}
+
+function createMarkup(arr) { 
+  return arr.map(({ date, day: { avgtemp_c, condition: { icon, text } } }) => `<li>
+  <img src="${icon}" alt="${text}" />
+  <p>${text}</p>
+  <h2>${date}</h2>
+  <h3>${avgtemp_c}</h3>
+</li>`)
+    .join("")
+}

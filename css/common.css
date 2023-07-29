@@ -216,3 +216,7 @@ h2 {
 .post-body {
   margin: 0;
 }
+
+.list {
+  list-style: none;
+}
