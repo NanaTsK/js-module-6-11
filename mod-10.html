@@ -22,9 +22,56 @@
         <h2>Example 2</h2>
 
         <div>
-          <button type="button" class="btn">Fetch posts</button>
+          <button type="button" class="btn2">Fetch posts</button>
           <ul class="posts"></ul>
         </div>
+      </li>
+      <li>
+        <h2>Example 3</h2>
+
+        <div>
+          <form class="form-inline search-form js-search-form">
+            <div class="form-group mx-sm-3 mb-2">
+              <label for="searchQuery" class="sr-only"
+                >What are you looking for?</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                name="query"
+                id="searchQuery"
+                placeholder="What are you looking for?"
+                autocomplete="off"
+              />
+            </div>
+            <button type="submit" class="btn btn-primary mb-2">Search</button>
+          </form>
+
+          <ul class="articles js-articles-container"></ul>
+
+          <button
+            type="button"
+            class="btn btn-primary button"
+            data-action="load-more"
+          >
+            <span
+              class="spinner-border spinner-border-sm spinner is-hidden"
+              role="status"
+              aria-hidden="true"
+            ></span>
+
+            <span class="label">Show more</span>
+          </button>
+        </div>
+      </li>
+
+      <li>
+        <h2>Example 4</h2>
+
+        <!-- <div>
+          <button type="button" class="btn2">Fetch posts</button>
+          <ul class="posts"></ul>
+        </div> -->
       </li>
     </ol>
     <script type="module" src="./js/js-module10.js"></script>
