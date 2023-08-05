@@ -102,15 +102,15 @@ function onSearch(evt) {
 //   const options = {
 //   header: {
 
-//       'x-api-key': "473ce05f82184291a23e48340991f924",
-//     },
+//      Authorization: `x-api-key 473ce05f82184291a23e48340991f924`
+//     }
 // };
-//   const url = "https://newsapi.org/v2/everything?q=cat&language=en&pageSize=5&page=1";
-//   // const url = "https://newsapi.org/v2/everything?q=cat";
-//   // const url = "https://newsapi.org/v2/everything?q=Apple&from=2023-08-04&sortBy=popularity";
+  // const url = "https://newsapi.org/v2/everything?q=cat&language=en&pageSize=5&page=1";
+  // const url = "https://newsapi.org/v2/everything?q=cat";
+  // const url = "https://newsapi.org/v2/everything?q=Apple&from=2023-08-04&sortBy=popularity";
 
 
-//   // const searcQuery = evt.correntTarget.elements.query.value;
+  // const searchQuery = evt.correntTarget.elements.query.value;
 
   const options = {
   headers: {

@@ -227,3 +227,8 @@ h2 {
   margin-bottom: 8px;
   margin-top: 8px;
 }
+
+.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+}
