@@ -26,7 +26,7 @@ function fetchUsers() {
 function renderUserList(users) {
   const markup = users
     .map((user) => {
-        return `<li>
+        return `<li class="fetch-card">
           <p><b>Name</b>: ${user.name}</p>
           <p><b>Email</b>: ${user.email}</p>
           <p><b>Company</b>: ${user.company.name}</p>
@@ -65,7 +65,7 @@ function fetchPosts() {
 function renderPosts(posts) {
   const markup = posts
     .map(({ id, title, body, userId }) => {
-      return `<li>
+      return `<li class="fetch-card">
           <h2 class="post-title">${title.slice(0, 30)}</h2>
           <p><b>Post id</b>: ${id}</p>
           <p><b>Author id</b>: ${userId}</p>
@@ -80,6 +80,7 @@ function renderPosts(posts) {
 // ===================================================
 console.log(`____________________`);
 console.log(`Example 3 :`);
+//* not exactly finished, can't fetch proper data from newsapi.org :(
 
 // newsapi.org
 // 473ce05f82184291a23e48340991f924
@@ -95,22 +96,35 @@ const articlesContainer = document.querySelector(".js-articles-container");
 
 searchForm.addEventListener("submit", onSearch);
 
-function onSearch(evt) { 
+function onSearch(evt) {   
   evt.preventDefault();
+
+//   const options = {
+//   header: {
+
+//       'x-api-key': "473ce05f82184291a23e48340991f924",
+//     },
+// };
+//   const url = "https://newsapi.org/v2/everything?q=cat&language=en&pageSize=5&page=1";
+//   // const url = "https://newsapi.org/v2/everything?q=cat";
+//   // const url = "https://newsapi.org/v2/everything?q=Apple&from=2023-08-04&sortBy=popularity";
+
+
+//   // const searcQuery = evt.correntTarget.elements.query.value;
 
   const options = {
   headers: {
-    // Authorization: "473ce05f82184291a23e48340991f924",
     Authorization: "live_kSIRSSuXC66Asfm1UmGRFimLVxLxKgZLpH0ehQLig7yUCgW8RM2ZryaFPNo8SDAW",
   },
 };
-  // const url = "https://newsapi.org/v2/everything?q=cat&language=en&pageSize=5&page=1";
   const url = "https://api.thecatapi.com/v1/images/search?limit=10";
 
 fetch(url, options)
   .then(r => r.json())
   .then(console.log);
 }
+
+
 
 // *     ----->     ----->     Example 4                                
 // ===================================================
@@ -152,7 +166,7 @@ function getWeather(city, days) {
   //  return fetch(`${BASE_URL}/forecast.json?key=${params}`)
 //*або
 
-  return fetch(`${BASE_URL}/forecast.json?key=${API_KEY}&q=${city}&days=${days}`)
+  return fetch(`${BASE_URL}/forecast.json?key=${API_KEY}&q=${city}&days=${days}&lang=uk`)
     .then(resp => { 
       if (!resp.ok) { 
         throw new Error(resp.statusText)
@@ -162,11 +176,30 @@ function getWeather(city, days) {
 }
 
 function createMarkup(arr) { 
-  return arr.map(({ date, day: { avgtemp_c, condition: { icon, text } } }) => `<li>
+  return arr.map(({ date, day: { avgtemp_c, condition: { icon, text } } }) => 
+  `<li class="fetch-card">
   <img src="${icon}" alt="${text}" />
   <p>${text}</p>
-  <h2>${date}</h2>
-  <h3>${avgtemp_c}</h3>
-</li>`)
+  <h2>${avgtemp_c} °C</h2>
+  <h3>${date}</h3>
+    </li>`)
     .join("")
 }
+
+// *     ----->     ----->     Example 5                                
+// ===================================================
+console.log(`____________________`);
+console.log(`Example 5 :`);
+
+
+
+// *     ----->     ----->     Example 6                                
+// ===================================================
+console.log(`____________________`);
+console.log(`Example 6 :`);
+
+
+// *     ----->     ----->     Example 7                                
+// ===================================================
+console.log(`____________________`);
+console.log(`Example 7 :`);
