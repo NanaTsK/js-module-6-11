@@ -43,8 +43,9 @@ function onLoad(entries, observer) {
 
 function createMarkup(arr) { 
     return arr.map(({ poster_path, title }) =>
-        `<li class="infinite-li fetch-card"><img src="https://image.tmdb.org/t/p/w300${poster_path}" alt="${title}">
-                <h2>${title}</h2>
+        `<li class="infinite-li fetch-card">
+        <img src="https://image.tmdb.org/t/p/w300${poster_path}" alt="${title}">
+        <h2>${title}</h2>
             </li>`
     ).join("")
 }
