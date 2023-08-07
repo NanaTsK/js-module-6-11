@@ -248,7 +248,8 @@ function createMarkup(arr) {
     .join("");
 }
 
-// Напишіть асинхронний мапінг «.map()» об’єкта з використанням callback. Зверніть увагу на те, що функція callback асинхронна, asyncObjectMap має повернути об’єкт, а не promise.
+// Напишіть асинхронний мапінг «.map()» об'єкта з використанням callback. 
+// Зверніть увагу на те, що функція callback асинхронна, asyncObjectMap має повернути об'єкт, а не promise.
 // async function asyncObjectMap(obj, callback) {
 //     const values = Object.values(obj);
 //     const result = values.map(callback);
